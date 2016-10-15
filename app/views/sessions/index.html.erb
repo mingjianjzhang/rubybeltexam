@@ -1,0 +1,88 @@
+<div class="container">
+	<div class="row">
+		<div class="col s6">
+			<h5> Lender </h5>
+<% if flash[:lender_errors] %>
+  <% flash[:lender_errors].each do |error| %>
+  			<p class="red-text"><%= error %></p>
+  <% end %>
+<% end %>
+			<form action="/lenders" method = "post">
+				 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<div class="input-field">
+					<input type="text" name="lender[first_name]" id="lfirst_name">
+					<label for="lfirst_name">First Name</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="lender[last_name]" id="llast_name">
+					<label for="llast_name">Last Name</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="lender[email]" id="email">
+					<label for="email">Email</label>
+				</div>
+				<div class="input-field">
+					<input type="password" name="lender[password]" id="lpassword">
+					<label for="lpassword">Password</label>
+				</div>
+				<div class="input-field">
+					<input type="password" name="lender[password_confirmation]" id="lpassword_confirmation">
+					<label for="lpassword_confirmation">Password Confirmation</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="lender[money]" id="lmoney">
+					<label for="lmoney">Money Available</label>
+				</div>
+			<a href="/login">Already a member?</a>
+			<button class="btn waves-effect waves-light center-align" type="submit">Register</button>
+			</form>
+		</div>
+		<div class="col s6">
+			<h5> Borrower </h5>
+<% if flash[:borrower_errors] %>
+  <% flash[:borrower_errors].each do |error| %>
+  			<p class="red-text"><%= error %></p>
+  <% end %>
+<% end %>
+
+			<form action="/borrowers" method="post">
+			 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<div class="input-field">
+					<input type="text" name="borrower[first_name]" id="bfirst_name">
+					<label for="bfirst_name">First Name</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="borrower[last_name]" id="blast_name">
+					<label for="blast_name">Last Name</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="borrower[email]" id="bemail">
+					<label for="bemail">Email</label>
+				</div>
+				<div class="input-field">
+					<input type="password" name="borrower[password]" id="bpassword">
+					<label for="bpassword">Password</label>
+				</div>
+				<div class="input-field">
+					<input type="password" name="borrower[password_confirmation]" id="bpassword_confirmation">
+					<label for="bpassword_confirmation">Password Confirmation</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="borrower[purpose]" id="bpurpose">
+					<label for="bpurpose">Need Money For:</label>
+				</div>
+				<div class="input-field">
+					<textarea class="materialize-textarea" name="borrower[description]" id="description"></textarea>
+					<label for="description">Description</label>
+				</div>
+				<div class="input-field">
+					<input type="text" name="borrower[money]" id="bmoney">
+					<label for="bmoney">Amount Needed</label>
+				</div>
+				<input type="hidden" name="borrower[raised]" value = "0">
+				<a href="/login">Already a member? </a>
+				<button class="btn waves-effect waves-light center-align" type="submit">Register</button>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<%= render 'shared/header'%>
+<div class="container">
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td><%= @borrower.first_name %> <%= @borrower.last_name %></td>
+		</tr>
+		<tr>
+			<td>Amount Needed:</td>
+			<td><%= @borrower.money %></td>
+		</tr>
+		<tr>
+			<td>Amount Raised:</td>
+			<td><%= @borrower.raised %></td>
+		</tr>
+	</table>
+	<h5> List of people who've lent you money </h5>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Amount Lent</th>
+		</tr>
+<% @my_lenders.each do |lender| %>
+		<tr>
+			<td><%= lender.full_name %></td>
+			<td><%= lender.email %></td>
+			<td><%= lender.amount_lent %></td>
+		</tr>
+<% end %>
+	</table>
+</div>

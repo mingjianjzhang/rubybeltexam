@@ -1,0 +1,65 @@
+<%= render 'shared/header'%>
+<div class="container">
+<h4 class="red-text"><%= flash[:error] %></h4>
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td><%= @lender.first_name %> <%= @lender.last_name %></td>
+		</tr>
+		<tr>
+			<td>Account Balance:</td>
+			<td><%= @lender.money %></td>
+		</tr>
+	</table>
+
+	<h6>List of people in need of help </h6>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Need Money For</th>
+			<th>Reason For Loan</th>
+			<th>Amount Needed</th>
+			<th>Amount Raised</th>
+			<th>Action</th>
+		</tr>
+<% @in_need.each do |borrower| %>
+		<tr>
+			<td><%= borrower.first_name %> <%= borrower.last_name %></td>
+			<td><%= borrower.purpose %></td>
+			<td><%= borrower.description %></td>
+			<td><%= borrower.money %></td>
+			<td><%= borrower.raised %></td>
+			<td>
+				<form action="/lend_money" method="post">
+					 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					 <input type="hidden" name="transaction[lender_id]" value="<%= session[:user_id] %>">
+					 <input type="hidden" name="transaction[borrower_id]" value=<%= borrower.id %>>
+					 <input type="text" name="transaction[amount]" id="amount">
+					 <button class="btn waves-effect waves-light center-align" type="submit">Lend</button>
+				</form>
+			</td>
+		</tr>
+<% end %>
+	</table>
+
+	<h5>List of people you've lent money to </h5>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Need Money For</th>
+			<th>Reason For Loan</th>
+			<th>Amount Needed</th>
+			<th>Amount Raised</th>
+			<th>Amount Lent</th>
+		</tr>
+<% @my_loans.each do |loan| %>
+		<tr>
+			<td><%= loan.full_name %></td>
+			<td><%= loan.purpose %></td>
+			<td><%= loan.description %></td>
+			<td><%= loan.money %></td>
+			<td><%= loan.raised %></td>
+			<td><%= loan.amount_lent %></td>
+		</tr>
+<% end %>
+	</table>

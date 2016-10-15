@@ -7,11 +7,11 @@
 		</tr>
 		<tr>
 			<td>Amount Needed:</td>
-			<td><%= @borrower.money %></td>
+			<td>$<%= @borrower.money %></td>
 		</tr>
 		<tr>
 			<td>Amount Raised:</td>
-			<td><%= @borrower.raised %></td>
+			<td>$<%= @borrower.raised %></td>
 		</tr>
 	</table>
 	<h5> List of people who've lent you money </h5>
@@ -25,7 +25,7 @@
 		<tr>
 			<td><%= lender.full_name %></td>
 			<td><%= lender.email %></td>
-			<td><%= lender.amount_lent %></td>
+			<td>$<%= lender.amount_lent %></td>
 		</tr>
 <% end %>
 	</table>

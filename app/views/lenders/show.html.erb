@@ -8,7 +8,7 @@
 		</tr>
 		<tr>
 			<td>Account Balance:</td>
-			<td><%= @lender.money %></td>
+			<td>$<%= @lender.money %></td>
 		</tr>
 	</table>
 
@@ -27,14 +27,17 @@
 			<td><%= borrower.first_name %> <%= borrower.last_name %></td>
 			<td><%= borrower.purpose %></td>
 			<td><%= borrower.description %></td>
-			<td><%= borrower.money %></td>
-			<td><%= borrower.raised %></td>
+			<td>$<%= borrower.money %></td>
+			<td>$<%= borrower.raised %></td>
 			<td>
-				<form action="/lend_money" method="post">
+				<form id="lendMoney" action="/lend_money" method="post">
 					 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 					 <input type="hidden" name="transaction[lender_id]" value="<%= session[:user_id] %>">
 					 <input type="hidden" name="transaction[borrower_id]" value=<%= borrower.id %>>
-					 <input type="text" name="transaction[amount]" id="amount">
+					 <div class="input-field">
+					 	<input type="text" name="transaction[amount]" id="amount">
+					 	<label for="amount">Amount</label>
+					 </div>
 					 <button class="btn waves-effect waves-light center-align" type="submit">Lend</button>
 				</form>
 			</td>
@@ -57,8 +60,8 @@
 			<td><%= loan.full_name %></td>
 			<td><%= loan.purpose %></td>
 			<td><%= loan.description %></td>
-			<td><%= loan.money %></td>
-			<td><%= loan.raised %></td>
+			<td>$<%= loan.money %></td>
+			<td>$<%= loan.raised %></td>
 			<td><%= loan.amount_lent %></td>
 		</tr>
 <% end %>

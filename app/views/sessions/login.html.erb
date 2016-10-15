@@ -1,6 +1,6 @@
 <div class="container">
 <h5> Login </h5>
-<%= flash[:no_user] %>
+<p class="red-text"><%= flash[:no_user] %></p>
 <form action="/login_user" method="post">
 	 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	 <div class="input-field">
@@ -11,7 +11,7 @@
 	 	<input type="password" name="password" id="password">
 	 	<label for="password">Password</label>
 	 </div>
-	 <%= flash[:bad_password] %>
+	 <p class="red-text"><%= flash[:bad_password] %></p>
 	 <a href="/">Click here to register</a>
 	 <button class="btn waves-effect waves-light center-align" type="submit">Login</button>
 </form>
